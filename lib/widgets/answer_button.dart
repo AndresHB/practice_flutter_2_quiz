@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Answer extends StatelessWidget {
+class AnswerButton extends StatelessWidget {
   final String label;
   final void Function() onPress;
 
-  const Answer(this.label, this.onPress, {super.key});
+  const AnswerButton(this.label, this.onPress, {super.key});
 
   @override
   Widget build(BuildContext context) {

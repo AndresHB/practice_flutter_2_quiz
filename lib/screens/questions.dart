@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:practice_flutter_2_quiz/widgets/answer.dart';
 import 'package:practice_flutter_2_quiz/modules/question.dart';
+import 'package:practice_flutter_2_quiz/widgets/answer_button.dart';
 
 class Questions extends StatefulWidget {
   final List<Question> questions;
@@ -48,7 +48,7 @@ class _QuestionsState extends State<Questions> {
               ),
             ),
             const SizedBox(height: 24),
-            ...form.getShuffledList().map((answer) => Answer(answer, () {
+            ...form.getShuffledList().map((answer) => AnswerButton(answer, () {
               onPressAnswer(answer);
             }))
           ],
