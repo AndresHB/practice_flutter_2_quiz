@@ -4,16 +4,16 @@ import 'package:practice_flutter_2_quiz/data/questions.dart';
 import 'package:practice_flutter_2_quiz/screens/answers.dart';
 import 'package:practice_flutter_2_quiz/screens/questions.dart';
 
-class App extends StatefulWidget {
-  const App({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
-  State<App> createState() {
+  State<MyApp> createState() {
     return _AppState();
   }
 }
 
-class _AppState extends State<App> {
+class _AppState extends State<MyApp> {
   Widget? screen;
   List<String>? selectedAnswers;
 

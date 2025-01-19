@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:practice_flutter_2_quiz/modules/question.dart';
 import 'package:practice_flutter_2_quiz/widgets/response_summary.dart';
 
-List<Map<String, Object>> _getSummary ({ required List<String> answers, required List<Question> questions }) {
+List<Map<String, Object>> _getSummary(
+    {required List<String> answers, required List<Question> questions}) {
   List<Map<String, Object>> summary = [];
 
   for (int i = 0; i < questions.length; i++) {
@@ -24,9 +25,9 @@ List<Map<String, Object>> _getSummary ({ required List<String> answers, required
 }
 
 class Answers extends StatelessWidget {
-  final void Function () onReset;
+  final void Function() onReset;
   final List<Map<String, Object>> summary;
-  
+
   Answers({
     super.key,
     required answers,
@@ -44,18 +45,19 @@ class Answers extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('You answered X out of Y questions correctly!'),
-            SizedBox(height: 32),
-            ...summary.map((summary) => 
-              ResponseSummary(
-                userAnswer: summary['user_answer'] as String,
-                questionLabel: summary['question_label'] as String,
-                correctAnswer: summary['correct_answer'] as String,
-                questionNumber: (summary['question_number'] as int) + 1,
-              )
-            ),
-            SizedBox(height: 32),
-            TextButton(onPressed: onReset, child: Text('Reset Quiz!'))
+            const Text('You answered X out of Y questions correctly!'),
+            const SizedBox(height: 32),
+            ...summary.map((summary) => ResponseSummary(
+                  userAnswer: summary['user_answer'] as String,
+                  questionLabel: summary['question_label'] as String,
+                  correctAnswer: summary['correct_answer'] as String,
+                  questionNumber: (summary['question_number'] as int) + 1,
+                )),
+            const SizedBox(height: 32),
+            TextButton(
+              onPressed: onReset,
+              child: const Text('Reset Quiz!'),
+            )
           ],
         ),
       ),
