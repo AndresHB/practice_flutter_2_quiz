@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:practice_flutter_2_quiz/modules/question.dart';
+import 'package:practice_flutter_2_quiz/widgets/title_text.dart';
 import 'package:practice_flutter_2_quiz/widgets/answer_button.dart';
 
 class Questions extends StatefulWidget {
@@ -38,15 +40,7 @@ class _QuestionsState extends State<Questions> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              form.question,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.lato(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 201, 153, 251),
-              ),
-            ),
+            TitleText(form.question),
             const SizedBox(height: 24),
             ...form.getShuffledList().map((answer) => AnswerButton(answer, () {
               onPressAnswer(answer);

@@ -31,7 +31,6 @@ class _AppState extends State<MyApp> {
     });
   }
 
-
   void onResetQuiz () {
     setState(() {
       selectedAnswers = [];

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:practice_flutter_2_quiz/modules/question.dart';
+import 'package:practice_flutter_2_quiz/widgets/title_text.dart';
 import 'package:practice_flutter_2_quiz/widgets/response_summary.dart';
 
 List<Map<String, Object>> _getSummary(
     {required List<String> answers, required List<Question> questions}) {
-  List<Map<String, Object>> summary = [];
+  final List<Map<String, Object>> summary = [];
 
   for (int i = 0; i < questions.length; i++) {
     final String answer = answers[i];
@@ -12,8 +14,8 @@ List<Map<String, Object>> _getSummary(
     final String correctAnswer = question.getCorrectAnswer();
 
     final Map<String, Object> value = {
-      'question_number': i,
       'user_answer': answer,
+      'question_number': i + 1,
       'correct_answer': correctAnswer,
       'question_label': question.question,
     };
@@ -37,21 +39,27 @@ class Answers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Container(
-        margin: const EdgeInsets.all(20),
-        child: Column(
+    final int totalQuestions = summary.length;
+    final int totalCorrectAnswers = summary.fold(
+        0,
+        (int result, Map<String, Object> current) =>
+            (current['user_answer'] == current['correct_answer']
+                ? result + 1
+                : result));
+
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('You answered X out of Y questions correctly!'),
+            TitleText('You answered $totalCorrectAnswers out of $totalQuestions questions correctly!'),
             const SizedBox(height: 32),
-            ...summary.map((summary) => ResponseSummary(
-                  userAnswer: summary['user_answer'] as String,
-                  questionLabel: summary['question_label'] as String,
-                  correctAnswer: summary['correct_answer'] as String,
-                  questionNumber: (summary['question_number'] as int) + 1,
+            ...summary.map((current) => ResponseSummary(
+                  userAnswer: current['user_answer'] as String,
+                  questionLabel: current['question_label'] as String,
+                  correctAnswer: current['correct_answer'] as String,
+                  questionNumber: current['question_number'] as int,
                 )),
             const SizedBox(height: 32),
             TextButton(
@@ -60,7 +68,6 @@ class Answers extends StatelessWidget {
             )
           ],
         ),
-      ),
     );
   }
 }
