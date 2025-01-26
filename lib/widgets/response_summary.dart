@@ -55,11 +55,15 @@ class AnswerRow extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(
-          answer,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: isCorrect ? Colors.green : Colors.red,
+        Expanded(
+          child: Text(
+            answer,
+            softWrap: true,
+            overflow: TextOverflow.clip,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: isCorrect ? Colors.green : Colors.red,
+            ),
           ),
         ),
       ],
