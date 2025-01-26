@@ -94,24 +94,16 @@ class ResponseSummary extends StatelessWidget {
         child: Column(
           children: [
             QuestionTitle(questionNumber, questionLabel),
+            const SizedBox(height: 8),
             Row(
               children: [
-                Container(
-                  color: Colors.black,
-                  child: const SizedBox(
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
+                const SizedBox(width: 32),
                 Expanded(
-                  child: Container(
-                    color: Colors.orange,
-                    child: Column(
-                      children: [
-                        AnswerRow('Correct answer:', correctAnswer, true),
-                        AnswerRow('Your answer:', userAnswer, isCorrectAnswer),
-                      ],
-                    ),
+                  child: Column(
+                    children: [
+                      AnswerRow('Correct answer:', correctAnswer, true),
+                      AnswerRow('Your answer:', userAnswer, isCorrectAnswer),
+                    ],
                   ),
                 ),
               ],
